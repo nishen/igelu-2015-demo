@@ -1,38 +1,33 @@
 package org.sample.demo;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+	private static final Logger log = LoggerFactory.getLogger(AppTest.class);
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+	private static List<String> items;
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+	@BeforeClass
+	public static void setup()
+	{
+		items = new ArrayList<String>();
+		items.add("fake");
+		items.add("test");
+	}
+
+	@Test
+	public void TestApp()
+	{
+		log.debug("running test: {}", "TestApp");
+
+		Assert.assertTrue("This is a unpossible!", items.contains("fake"));
+	}
 }
